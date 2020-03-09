@@ -226,25 +226,21 @@ event.preventDefault();
         name: $("#firstNameInput, #lastNameInput").val().trim(),
         photo: $("#photoInput").val(),
         scores:[
-            parseInt($("#Q1").val()),
-            parseInt($("#Q2").val()),
-            parseInt($("#Q3").val()),
-            parseInt($("#Q4").val()),
-            parseInt($("#Q5").val()),
-            parseInt($("#Q6").val()),
-            parseInt($("#Q7").val()),
-            parseInt($("#Q8").val()),
-            parseInt($("#Q9").val()),
-            parseInt($("#Q10").val()),
+            $("#Q1").val(),
+            ("#Q2").val(),
+            ("#Q3").val(),
+            ("#Q4").val(),
+            ("#Q5").val(),
+            ("#Q6").val(),
+            $("#Q7").val(),
+            $("#Q8").val(),
+            $("#Q9").val(),
+            $("#Q10").val(),
 
         ]
     }
-// function parseScore(score){
-//     parseInt(score)
-// // }
-// userAns.scores.forEach(parseScore());
-    
-console.log(userAns);
+
+// console.log(userAns);
 
 $.post("/api/friends", userAns, (function(data){
 
