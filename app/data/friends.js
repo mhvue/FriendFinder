@@ -52,5 +52,12 @@ var friendsData= [{
 ];
 
 
+// for(var j = 0; j < friendsData.length; j++){
+//     console.log(friendsData[j].scores);
+//     // for (var k = 0;k < friendsData[j].scores.length; k ++) {
+//     //     console.log(friendsData[j].scores[k])
+//     // }
+//     // console.log(friendsData[0].scores);
+// }
 
 module.exports= friendsData;

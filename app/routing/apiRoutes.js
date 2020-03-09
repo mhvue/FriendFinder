@@ -11,9 +11,7 @@ app.get("/api/friends", function(req, res){
 });
 
 //  * A POST routes `/api/friends`. This will be used to handle incoming survey results. 
-app.post("/api/friends", function(req, res) {
-    // var surveyAns = req.body; //when having just this, it will work and be added the api list.. (as long as we the below code too)
-    
+app.post("/api/friends", function(req, res) {    
         //make an empty array to put the suvey answers into this empty array and compared to the rest to do the math 
     var surveyAns= {
         name: req.body.name,
@@ -21,14 +19,22 @@ app.post("/api/friends", function(req, res) {
         scores: req.body.scores
     }
 
-    // console.log(surveyAns);
-
     var userAnsArr =[];
     for(var i = 0; i < surveyAns.scores.length; i++){
         userAnsArr.push(parseInt(surveyAns.scores[i]));
 
     }
-    console.log(userAnsArr)
+    console.log(userAnsArr);
+
+    for(var j = 0; j < friendsData.length; j++){
+        console.log(userAnsArry - friendsData[j].scores);
+    
+    }
+    
+
+
+    // var checkScore = userAnsArr - surveyAns.scores
+    // console.log(checkScore);
 
     // This route will also be used to handle the compatibility logic.
     friendsDataJS.push(surveyAns);
