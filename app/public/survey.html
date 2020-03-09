@@ -6,7 +6,9 @@
     <title>Survey Questions</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+
 </head>
 <body>
 <div class="container">
@@ -16,12 +18,12 @@
     <form class="needs-validation" novalidate></form>
     <div class="form-row">
         <div class="col">
-            <label for="validationCustom01">First name</label>
-            <input type="text" class="form-control"  id="validationCustom01" value="First name" required>
+            <label for="validationCustom01">Your Name</label>
+            <input type="text" class="form-control"  id="firstNameInput" placeholder="Name" required>
         </div>
         <div class="col">
-            <label for="validationCustom01">Last name</label>
-            <input type="text" class="form-control" id="validationCustom01" value="Last name" required>
+            <label for="validationCustom02">Your Photo</label>
+            <input type="text" class="form-control" id="photoInput" placeholder="url of photo" required>
         </div>
     </div>
     </form>
@@ -33,7 +35,7 @@
         <div class="form-row align-items-center">
             <div class="col-auto my-1">
                 <h5>Q1) You enjoy the outdoors</h5>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <select class="custom-select mr-sm-2" id="Q1">
                     <option selected>Choose...</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -49,7 +51,7 @@
             <div class="col-auto my-1">
                 <!-- <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label> -->
                 <h5>Q2) Comedy is one of your to fave movie genres</h5>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <select class="custom-select mr-sm-2" id="Q2">
                     <option selected>Choose...</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -64,7 +66,7 @@
             <div class="col-auto my-1">
                 <!-- <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label> -->
                 <h5>Q3) Excercising is a hobby </h5>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <select class="custom-select mr-sm-2" id="Q3">
                     <option selected>Choose...</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -79,7 +81,7 @@
             <div class="col-auto my-1">
                 <!-- <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label> -->
                 <h5>Q4) You like to try new things </h5>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <select class="custom-select mr-sm-2" id="Q4">
                     <option selected>Choose...</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -94,7 +96,7 @@
             <div class="col-auto my-1">
                 <!-- <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label> -->
                 <h5>Q5) The weekends, you don't mind staying home and watching Netflix</h5>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <select class="custom-select mr-sm-2" id="Q5">
                     <option selected>Choose...</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -109,7 +111,7 @@
             <div class="col-auto my-1">
                 <!-- <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label> -->
                 <h5>Q6) You like to cook </h5>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <select class="custom-select mr-sm-2" id="Q6">
                     <option selected>Choose...</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -124,7 +126,7 @@
             <div class="col-auto my-1">
                 <!-- <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label> -->
                 <h5>Q7) Reading is a good past time activity.</h5>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <select class="custom-select mr-sm-2" id="Q7">
                     <option selected>Choose...</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -138,7 +140,7 @@
             <div class="col-auto my-1">
                 <!-- <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label> -->
                 <h5>Q8) Texting and calling is your form of preferred communiction </h5>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <select class="custom-select mr-sm-2" id="Q8">
                     <option selected>Choose...</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -154,7 +156,7 @@
             <div class="col-auto my-1">
                 <!-- <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label> -->
                 <h5>Q9) You enjoy pop music most of the time</h5>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <select class="custom-select mr-sm-2" id="Q9">
                     <option selected>Choose...</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -169,7 +171,7 @@
             <div class="col-auto my-1">
                 <!-- <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label> -->
                 <h5>Q10) You like coffee</h5>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <select class="custom-select mr-sm-2" id="Q10">
                     <option selected>Choose...</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -181,35 +183,79 @@
 
         </div>  
         <br>
-        <a href="#" class="btn btn-primary btn-lg btn-block" type="submit">Submit form</button></a>
+        <button id = "submitBtn"><a href="/app/data/friends.js" class="btn btn-primary btn-lg btn-block" type="submit">Submit form</button></a>
         <br>
       </form>
 
+      <footer class="footer">
+        <div class="container">
+          <p><a href="/api/friends">API Friends Link</a> | <a href="#">GitHub Repo</a>
+        </div>
+      </footer>
+
  </div>
 
- <script>
+ <script type = "text/javascript">
+
+//  console.log($("#Q1").val());
     // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function() {
-      'use strict';
-      window.addEventListener('load', function() {
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.getElementsByClassName('needs-validation');
-        // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function(form) {
-          form.addEventListener('submit', function(event) {
-            if (form.checkValidity() === false) {
-              event.preventDefault();
-              event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-          }, false);
-        });
-      }, false);
-    })();
+    // (function() {
+    //   'use strict';
+    //   window.addEventListener('load', function() {
+    //     // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    //     var forms = document.getElementsByClassName('needs-validation');
+    //     // Loop over them and prevent submission
+    //     var validation = Array.prototype.filter.call(forms, function(form) {
+    //       form.addEventListener('submit', function(event) {
+    //         if (form.checkValidity() === false) {
+    //           event.preventDefault();
+    //           event.stopPropagation();
+    //         }
+    //         form.classList.add('was-validated');
+    //       }, false);
+    //     });
+
+    //   }, false);
+    // })();
+
+ $("#submitBtn").on("click", function () {
+event.preventDefault();
+     //add validation here
+     //create object here to hold answers from survey
+    var userAns = {
+        name: $("#firstNameInput, #lastNameInput").val().trim(),
+        photo: $("#photoInput").val(),
+        scores:[
+            parseInt($("#Q1").val()),
+            parseInt($("#Q2").val()),
+            parseInt($("#Q3").val()),
+            parseInt($("#Q4").val()),
+            parseInt($("#Q5").val()),
+            parseInt($("#Q6").val()),
+            parseInt($("#Q7").val()),
+            parseInt($("#Q8").val()),
+            parseInt($("#Q9").val()),
+            parseInt($("#Q10").val()),
+
+        ]
+    }
+// function parseScore(score){
+//     parseInt(score)
+// // }
+// userAns.scores.forEach(parseScore());
+    
+console.log(userAns);
+
+$.post("/api/friends", userAns, (function(data){
+
+    console.log(data);
+
+    //this also needs to inlude when pop up msg show possible matches
+}));
+});
     </script>
 
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
