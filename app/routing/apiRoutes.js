@@ -12,33 +12,44 @@ app.get("/api/friends", function(req, res){
 
 //  * A POST routes `/api/friends`. This will be used to handle incoming survey results. 
 app.post("/api/friends", function(req, res) {    
-        //make an empty array to put the suvey answers into this empty array and compared to the rest to do the math 
+    // var surveyAns= req.body;
+    //make an empty array to put the suvey answers into this empty array and compared to the rest to do the math 
     var surveyAns= {
         name: req.body.name,
         photo: req.body.photo,
         scores: req.body.scores
     }
 
-    var userAnsArr =[];
+    //loop to parse scores
     for(var i = 0; i < surveyAns.scores.length; i++){
-        userAnsArr.push(parseInt(surveyAns.scores[i]));
-
-    }
-    console.log(userAnsArr);
-
-    for(var j = 0; j < friendsData.length; j++){
-        console.log(userAnsArry - friendsData[j].scores);
-    
+       surveyAns.scores[i]= parseInt(surveyAns.scores[i]);
+    //    console.log(surveyAns.scores[i]);
     }
     
 
+    // loop to get the scores one at a time from FriendsData
+    for(var j = 0; j < friendsDataJS.length; j++){
+        console.log(friendsDataJS[j].scores);
+        for(var k = 0; k < friendsDataJS[j].scores.length; k++){
+           var diff =  surveyAns.scores[k] - friendsDataJS[j].scores[k];
+           console.log(diff);
+        }
+        
+        // console.log("answer" + math)
+
+    }
+
+    // var newArray =
+    //    console.log(newMatch + "hello");
+
+       
 
     // var checkScore = userAnsArr - surveyAns.scores
     // console.log(checkScore);
 
     // This route will also be used to handle the compatibility logic.
     friendsDataJS.push(surveyAns);
-    console.log(surveyAns);
+    // console.log(surveyAns);
     res.json(surveyAns);
 
 });
