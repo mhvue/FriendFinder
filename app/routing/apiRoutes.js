@@ -20,7 +20,7 @@ app.post("/api/friends", function(req, res) {
         scores: req.body.scores
     }
 
-    //loop to parse scores
+    //loop to parse all the scores
     for(var i = 0; i < surveyAns.scores.length; i++){
        surveyAns.scores[i]= parseInt(surveyAns.scores[i]);
     //    console.log(surveyAns.scores[i]);
@@ -31,22 +31,13 @@ app.post("/api/friends", function(req, res) {
     for(var j = 0; j < friendsDataJS.length; j++){
         console.log(friendsDataJS[j].scores);
         for(var k = 0; k < friendsDataJS[j].scores.length; k++){
-           var diff =  surveyAns.scores[k] - friendsDataJS[j].scores[k];
+           var diff =  Math.abs(surveyAns.scores[k] - friendsDataJS[j].scores[k]);
            console.log(diff);
         }
-        
-        // console.log("answer" + math)
 
     }
 
-    // var newArray =
-    //    console.log(newMatch + "hello");
-
-       
-
-    // var checkScore = userAnsArr - surveyAns.scores
-    // console.log(checkScore);
-
+    
     // This route will also be used to handle the compatibility logic.
     friendsDataJS.push(surveyAns);
     // console.log(surveyAns);
