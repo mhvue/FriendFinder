@@ -12,36 +12,46 @@ app.get("/api/friends", function(req, res){
 
 //  * A POST routes `/api/friends`. This will be used to handle incoming survey results. This route will also be used to handle the compatibility logic.
 app.post("/api/friends", function(req, res) {  
-    //make an empty array to put the suvey answers into this empty array and compared to the rest to do the math 
     var surveyAns= {
         name: req.body.name,
         photo: req.body.photo,
         scores: req.body.scores
     }
 
-    //loop to parse all the scores so need surveyAns.scores[i] 
+    //loop to parse all the scores so need to set it equal to surveyAns.scores[i] 
     for(var i = 0; i < surveyAns.scores.length; i++){
        surveyAns.scores[i]= parseInt(surveyAns.scores[i]);
     //    console.log(surveyAns.scores[i]);
     }
     
-
+    var lowestIndex = -1; //index in array of friendsData
+    var lowestScore = 51;
+    var friendsScore = 0;
     // loop to get the scores array from FriendsData  
     for(var j = 0; j < friendsDataJS.length; j++){
+        friendsScore = 0;
         // console.log(friendsDataJS[j].scores);
         //need this loop b/c we need to access each individual friendsData.scores value from their array 
         for(var k = 0; k < friendsDataJS[j].scores.length; k++){ 
             // console.log(friendsDataJS[j].scores[k]); 
             //then  will take our survey scores and subtract it from the friendsData scores array, one at a time, use Math.abs to make it an absolute val
            var diff =  Math.abs(surveyAns.scores[k] - friendsDataJS[j].scores[k]);
-           console.log(diff);
+        //    console.log(diff);
+            friendsScore = friendsScore + diff;
         }
 
+        if(friendsScore < lowestScore) {
+            lowestIndex = j;
+            lowestScore = friendsScore;
+        }
+        console.log(friendsDataJS[j].name + "=" + friendsScore)
     }
 
-    //need if/else statement to get the match 
+console.log(friendsDataJS[lowestIndex].name)
 
-    friendsDataJS.push(surveyAns);
+    
+
+    //friendsDataJS.push(surveyAns);
     // console.log(surveyAns);
     res.json(surveyAns);
 
