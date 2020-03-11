@@ -2,12 +2,10 @@ var friendsDataJS = require("../data/friends.js");
 
 // Your `apiRoutes.js` file should contain two routes:
 module.exports = function (app){
-//    * A GET route with the url `/api/friends`. This will be used to display a JSON of all possible friends.
+//    * A GET route with the url `/api/friends`. 
 app.get("/api/friends", function(req, res){
     // console.log("hello. I work")
     return res.json(friendsDataJS);
-
-    //this will display all possible friends 
 });
 
 //  * A POST routes `/api/friends`. This will be used to handle incoming survey results. This route will also be used to handle the compatibility logic.
@@ -21,15 +19,14 @@ app.post("/api/friends", function(req, res) {
     //loop to parse all the scores so need to set it equal to surveyAns.scores[i] 
     for(var i = 0; i < surveyAns.scores.length; i++){
        surveyAns.scores[i]= parseInt(surveyAns.scores[i]);
-    //    console.log(surveyAns.scores[i]);
     }
     
     var lowestIndex = -1; //added this -1 index b/c we don't want to miss out on index of 0 
     var lowestScore = 51; //highest score on survey is 50(5x10). input this var as 51 so that  we have the rest of the scores to compare to start off
-    var friendsScore = 0; 
+     
     // loop to get the scores array from FriendsData  
     for(var j = 0; j < friendsDataJS.length; j++){
-        friendsScore = 0;
+       var friendsScore = 0;
         // console.log(friendsDataJS[j].scores);
         //need this loop b/c we need to access each individual friendsData.scores value from their array 
         for(var k = 0; k < friendsDataJS[j].scores.length; k++){ 
@@ -44,14 +41,10 @@ app.post("/api/friends", function(req, res) {
             lowestIndex = j;
             lowestScore = friendsScore;
         }
-        console.log(friendsDataJS[j].name + "=" + friendsScore)
+        // console.log(friendsDataJS[j].name + "=" + friendsScore)
     }
-
 // console.log(friendsDataJS[lowestIndex].name)
-
-
     friendsDataJS.push(surveyAns);
-
     //to showing the best match in model on html side
     res.json(friendsDataJS[lowestIndex])
 
