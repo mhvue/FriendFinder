@@ -3,7 +3,7 @@
 // ```json
 var friendsData= [{
   name:"Ahmed",
-  photo:"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+  photo:"https://cdn.pixabay.com/photo/2015/01/08/18/29/entrepreneur-593358_960_720.jpg", 
   scores:[
       5,
       1,
@@ -19,7 +19,7 @@ var friendsData= [{
 }, 
 {
     name:"Samantha",
-    photo:"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+    photo:"https://cdn.pixabay.com/photo/2014/04/26/04/25/fitness-332278_960_720.jpg",
     scores:[
         4,
         2,
@@ -35,7 +35,7 @@ var friendsData= [{
   },
   {
     name:"David",
-    photo:"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+    photo:"https://cdn.pixabay.com/photo/2014/07/31/23/49/guitarist-407212_960_720.jpg",
     scores:[
         1,
         5,
@@ -50,14 +50,5 @@ var friendsData= [{
       ]
   }
 ];
-
-
-// for(var j = 0; j < friendsData.length; j++){
-//     console.log(friendsData[j].scores);
-//     for (var k = 0;k < friendsData[j].scores.length; k ++) {
-//         console.log(friendsData[j].scores[k])
-//     }
- 
-// }
 
 module.exports= friendsData;

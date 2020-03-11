@@ -24,9 +24,9 @@ app.post("/api/friends", function(req, res) {
     //    console.log(surveyAns.scores[i]);
     }
     
-    var lowestIndex = -1; //index in array of friendsData
-    var lowestScore = 51;
-    var friendsScore = 0;
+    var lowestIndex = -1; //added this -1 index b/c we don't want to miss out on index of 0 
+    var lowestScore = 51; //highest score on survey is 50(5x10). input this var as 51 so that  we have the rest of the scores to compare to start off
+    var friendsScore = 0; 
     // loop to get the scores array from FriendsData  
     for(var j = 0; j < friendsDataJS.length; j++){
         friendsScore = 0;
@@ -47,13 +47,13 @@ app.post("/api/friends", function(req, res) {
         console.log(friendsDataJS[j].name + "=" + friendsScore)
     }
 
-console.log(friendsDataJS[lowestIndex].name)
+// console.log(friendsDataJS[lowestIndex].name)
 
-    
 
-    //friendsDataJS.push(surveyAns);
-    // console.log(surveyAns);
-    res.json(surveyAns);
+    friendsDataJS.push(surveyAns);
+
+    //to showing the best match in model on html side
+    res.json(friendsDataJS[lowestIndex])
 
 });
 

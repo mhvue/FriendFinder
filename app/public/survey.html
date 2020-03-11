@@ -189,53 +189,31 @@
 
       <footer class="footer">
         <div class="container">
-          <p><a href="/api/friends">API Friends Link</a> | <a href="#">GitHub Repo</a>
+          <p><a href="/api/friends">API Friends Link</a> | <a href="https://github.com/mhvue/FriendFinder.git">GitHub Repo</a>
         </div>
       </footer>
 
  </div>
- <div id="results-modal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h2 class="modal-title"><strong>Best Match</strong></h2>
-        </div>
-        <div class="modal-body">
-          <h2 id="match-name"></h2>
-          <img id="match-img" src="" alt="">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <!-- Modal content from bootstrap-->
+      <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="Friend Match" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="friendMatchTitle">Your Friend Match is here!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h2 id="friendMatch-name"></h2>
+            <img id="friendMatch-img" src="" alt="">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
-
-    </div>
-  </div>
  <script type = "text/javascript">
-
-//  console.log($("#Q1").val());
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    // (function() {
-    //   'use strict';
-    //   window.addEventListener('load', function() {
-    //     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    //     var forms = document.getElementsByClassName('needs-validation');
-    //     // Loop over them and prevent submission
-    //     var validation = Array.prototype.filter.call(forms, function(form) {
-    //       form.addEventListener('submit', function(event) {
-    //         if (form.checkValidity() === false) {
-    //           event.preventDefault();
-    //           event.stopPropagation();
-    //         }
-    //         form.classList.add('was-validated');
-    //       }, false);
-    //     });
-
-    //   }, false);
-    // })();
 
  $("#submitBtn").on("click", function () {
 event.preventDefault();
@@ -262,11 +240,10 @@ event.preventDefault();
 // console.log(userAns);
 
 $.post("/api/friends", userAns, (function(data){
-    console.log(data);
-    $("#match-name").text(data.name);
-    $("#match-img").attr("src", data.photo);
-    $("#results-modal").modal("toggle");
-    //this also needs to inlude when pop up msg show possible matches
+  
+    $("#friendMatch-name").text(data.name);
+    $("#friendMatch-img").attr("src", data.photo).width("300px");
+    $("#modal").modal("toggle");
 }));
 });
     </script>
