@@ -28,7 +28,7 @@
     </div>
     </form>
     <br>
-    <h4>Rank each statement below from 1-5, with 1 being you Strongly Agree to 5 being Strongly disagree</h4>
+    <h4>Rank each statement below from 1-5, with 1 being you Strongly Agree to 5 being Strongly Disagree</h4>
     <br>
     
     <form>
@@ -49,7 +49,6 @@
     
         <div class="form-row align-items-center">
             <div class="col-auto my-1">
-                <!-- <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label> -->
                 <h5>Q2) Comedy is one of your to fave movie genres</h5>
                 <select class="custom-select mr-sm-2" id="Q2">
                     <option selected>Choose...</option>
@@ -64,7 +63,6 @@
     
         <div class="form-row align-items-center">
             <div class="col-auto my-1">
-                <!-- <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label> -->
                 <h5>Q3) Excercising is a hobby </h5>
                 <select class="custom-select mr-sm-2" id="Q3">
                     <option selected>Choose...</option>
@@ -79,7 +77,6 @@
     
         <div class="form-row align-items-center">
             <div class="col-auto my-1">
-                <!-- <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label> -->
                 <h5>Q4) You like to try new things </h5>
                 <select class="custom-select mr-sm-2" id="Q4">
                     <option selected>Choose...</option>
@@ -94,7 +91,6 @@
     
         <div class="form-row align-items-center">
             <div class="col-auto my-1">
-                <!-- <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label> -->
                 <h5>Q5) The weekends, you don't mind staying home and watching Netflix</h5>
                 <select class="custom-select mr-sm-2" id="Q5">
                     <option selected>Choose...</option>
@@ -109,7 +105,6 @@
     
         <div class="form-row align-items-center">
             <div class="col-auto my-1">
-                <!-- <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label> -->
                 <h5>Q6) You like to cook </h5>
                 <select class="custom-select mr-sm-2" id="Q6">
                     <option selected>Choose...</option>
@@ -124,7 +119,6 @@
     
         <div class="form-row align-items-center">
             <div class="col-auto my-1">
-                <!-- <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label> -->
                 <h5>Q7) Reading is a good past time activity.</h5>
                 <select class="custom-select mr-sm-2" id="Q7">
                     <option selected>Choose...</option>
@@ -138,7 +132,6 @@
         </div>
         <div class="form-row align-items-center">
             <div class="col-auto my-1">
-                <!-- <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label> -->
                 <h5>Q8) Texting and calling is your form of preferred communiction </h5>
                 <select class="custom-select mr-sm-2" id="Q8">
                     <option selected>Choose...</option>
@@ -154,7 +147,6 @@
     
         <div class="form-row align-items-center">
             <div class="col-auto my-1">
-                <!-- <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label> -->
                 <h5>Q9) You enjoy pop music most of the time</h5>
                 <select class="custom-select mr-sm-2" id="Q9">
                     <option selected>Choose...</option>
@@ -169,7 +161,6 @@
     
         <div class="form-row align-items-center">
             <div class="col-auto my-1">
-                <!-- <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label> -->
                 <h5>Q10) You like coffee</h5>
                 <select class="custom-select mr-sm-2" id="Q10">
                     <option selected>Choose...</option>
@@ -194,7 +185,7 @@
       </footer>
 
  </div>
-      <!-- Modal content from bootstrap-->
+      <!-- Best Match Modal- code from bootstrap-->
       <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="Friend Match" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -218,8 +209,26 @@
  $("#submitBtn").on("click", function () {
 event.preventDefault();
      //add validation here
-     //create object here to hold answers from survey
-    var userAns = {
+    
+
+    if($("#firstNameInput, #lastNameInput").val() == ""){
+       alert("Please input Name and Photo!");
+    }   
+    else if(
+        $("#Q1").val() === "Choose" ||
+        $("#Q2").val()  === "Choose"||
+        $("#Q3").val() === "Choose" ||
+        $("#Q4").val() === "Choose" ||
+        $("#Q5").val() === "Choose" ||
+        $("#Q6").val() === "Choose" ||
+        $("#Q7").val() === "Choose" ||
+        $("#Q8").val() === "Choose" ||
+        $("#Q9").val() === "Choose" ||
+        $("#Q10").val() === "Choose" ) {
+     alert("Please complete all Questions!")
+    }
+    else{
+        var userAns = {
         name: $("#firstNameInput, #lastNameInput").val().trim(),
         photo: $("#photoInput").val(),
         scores:[
@@ -233,18 +242,16 @@ event.preventDefault();
             $("#Q8").val(),
             $("#Q9").val(),
             $("#Q10").val(),
-
         ]
     }
+        $.post("/api/friends", userAns, (function(data){
+            $("#friendMatch-name").text(data.name);
+            $("#friendMatch-img").attr("src", data.photo).width("300px");
+            $("#modal").modal("toggle");
+    }));
 
-// console.log(userAns);
-
-$.post("/api/friends", userAns, (function(data){
+}
   
-    $("#friendMatch-name").text(data.name);
-    $("#friendMatch-img").attr("src", data.photo).width("300px");
-    $("#modal").modal("toggle");
-}));
 });
     </script>
 

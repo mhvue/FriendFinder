@@ -4,7 +4,6 @@ var friendsDataJS = require("../data/friends.js");
 module.exports = function (app){
 //    * A GET route with the url `/api/friends`. 
 app.get("/api/friends", function(req, res){
-    // console.log("hello. I work")
     return res.json(friendsDataJS);
 });
 
@@ -43,7 +42,7 @@ app.post("/api/friends", function(req, res) {
         }
         // console.log(friendsDataJS[j].name + "=" + friendsScore)
     }
-// console.log(friendsDataJS[lowestIndex].name)
+    
     friendsDataJS.push(surveyAns);
     //to showing the best match in model on html side
     res.json(friendsDataJS[lowestIndex])
