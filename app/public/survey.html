@@ -19,11 +19,11 @@
     <div class="form-row">
         <div class="col">
             <label for="validationCustom01">Your Name</label>
-            <input type="text" class="form-control"  id="firstNameInput" placeholder="Name" required>
+            <input type="text" class="form-control"  id="firstNameInput" placeholder="Name(Required)" required>
         </div>
         <div class="col">
             <label for="validationCustom02">Your Photo</label>
-            <input type="text" class="form-control" id="photoInput" placeholder="url of photo" required>
+            <input type="text" class="form-control" id="photoInput" placeholder="url of photo(Required)" required>
         </div>
     </div>
     </form>
@@ -228,21 +228,21 @@
 
  //add validation here
 
- //validation if anyone presses submit w/o entering any values in survy questions 
-//  var count = 0;  
-//  for(var i =0; i <=9; i++){
-//      count++
+//  validation if presses submit w/o answering any of the questions 
+ var count = 0;  
+ for(var i =0; i <=9; i++){
+     count++
 
-//     if( $("#Q" + count).val() === "Choose..."){
-//         console.log("true")
-//     //  alert("Please complete all Questions!");
-//     }
-//     else {
-//         break;
-//     }
-// }
+    if( $("#Q" + count).val() === "Choose..."){
+        console.log("true")
+    //  alert("Please complete all Questions!");
+    }
+    else {
+        break;
+    }
+}
 
-//validation for if no name 
+//validation for if no name entered, no photo url entered, and if any single question missed
     if(userAns.name == ""){
        alert("Please input your Name.");
        console.log(userAns.name);
@@ -250,7 +250,7 @@
     else if(userAns.photo == ""){
      alert("Please enter in a photo url");
     }
-    
+
     else if( 
         $("#Q1").val() == "Choose..." ||
         $("#Q2").val()  == "Choose..." ||
@@ -261,12 +261,12 @@
         $("#Q7").val() == "Choose..." ||
         $("#Q8").val() == "Choose..." ||
         $("#Q9").val() == "Choose..."||
-        $("#Q10").val() == "Choose...") {
+        $("#Q10").val() == "Choose..."
+        ) {
     alert("Please complete all questions.")
      }
 
     else{
-        // console.log(userAns.scores);
         $.post("/api/friends", userAns, (function(data){
             $("#friendMatch-name").text(data.name);
             $("#friendMatch-img").attr("src", data.photo).width("300px");
