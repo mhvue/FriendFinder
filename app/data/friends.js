@@ -48,6 +48,22 @@ var friendsData= [{
         4,
         4
       ]
+  },
+  {
+    name:"Monica",
+    photo:"https://cdn.pixabay.com/photo/2014/01/03/01/13/girl-237871__340.jpg",
+    scores:[
+        5,
+        5,
+        4,
+        2,
+        1,
+        3,
+        4,
+        1,
+        4,
+        1
+      ]
   }
 ];
 
