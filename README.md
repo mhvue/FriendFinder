@@ -1,9 +1,9 @@
 # FriendFinder
 
-This application has 10 simple questions to answer to find a new friend! Just answer each question based on a scale of 1-5, with _1 being you Strongly Agree_ to _5 being Strongly Disagree_. 
+This application has 10 simple questions to answer to find a new friend! Just answer each question based on a scale of 1-5, with _1 being Strongly Agree_ to _5 being Strongly Disagree_. 
 
 ## How it works:
-1. Input your Name and a url to a photo (both are required).
+1. Input your Name and a photo url. Both are required.
 2. Answer the 10 questions. All questions are required to be answered.
 3. Ta-da! A best match is found. 
 
