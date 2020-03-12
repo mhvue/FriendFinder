@@ -207,43 +207,66 @@
  <script type = "text/javascript">
 
  $("#submitBtn").on("click", function () {
-event.preventDefault();
-     //add validation here
-    
+    event.preventDefault();
 
-    if($("#firstNameInput, #lastNameInput").val() == ""){
-       alert("Please input Name and Photo!");
+    var userAns = {
+    name: $("#firstNameInput, #lastNameInput").val().trim(),
+    photo: $("#photoInput").val(),
+    scores:[
+        $("#Q1").val(),
+        $("#Q2").val(),
+        $("#Q3").val(),
+        $("#Q4").val(),
+        $("#Q5").val(),
+        $("#Q6").val(),
+        $("#Q7").val(),
+        $("#Q8").val(),
+        $("#Q9").val(),
+        $("#Q10").val(),
+    ]
+}
+
+ //add validation here
+
+ //validation if anyone presses submit w/o entering any values in survy questions 
+//  var count = 0;  
+//  for(var i =0; i <=9; i++){
+//      count++
+
+//     if( $("#Q" + count).val() === "Choose..."){
+//         console.log("true")
+//     //  alert("Please complete all Questions!");
+//     }
+//     else {
+//         break;
+//     }
+// }
+
+//validation for if no name 
+    if(userAns.name == ""){
+       alert("Please input your Name.");
+       console.log(userAns.name);
     }   
-    else if(
-        $("#Q1").val() === "Choose" ||
-        $("#Q2").val()  === "Choose"||
-        $("#Q3").val() === "Choose" ||
-        $("#Q4").val() === "Choose" ||
-        $("#Q5").val() === "Choose" ||
-        $("#Q6").val() === "Choose" ||
-        $("#Q7").val() === "Choose" ||
-        $("#Q8").val() === "Choose" ||
-        $("#Q9").val() === "Choose" ||
-        $("#Q10").val() === "Choose" ) {
-     alert("Please complete all Questions!")
+    else if(userAns.photo == ""){
+     alert("Please enter in a photo url");
     }
+    
+    else if( 
+        $("#Q1").val() == "Choose..." ||
+        $("#Q2").val()  == "Choose..." ||
+        $("#Q3").val()  == "Choose..." ||
+        $("#Q4").val() == "Choose..." ||
+        $("#Q5").val() == "Choose..." ||
+        $("#Q6").val() == "Choose..." ||
+        $("#Q7").val() == "Choose..." ||
+        $("#Q8").val() == "Choose..." ||
+        $("#Q9").val() == "Choose..."||
+        $("#Q10").val() == "Choose...") {
+    alert("Please complete all questions.")
+     }
+
     else{
-        var userAns = {
-        name: $("#firstNameInput, #lastNameInput").val().trim(),
-        photo: $("#photoInput").val(),
-        scores:[
-            $("#Q1").val(),
-            $("#Q2").val(),
-            $("#Q3").val(),
-            $("#Q4").val(),
-            $("#Q5").val(),
-            $("#Q6").val(),
-            $("#Q7").val(),
-            $("#Q8").val(),
-            $("#Q9").val(),
-            $("#Q10").val(),
-        ]
-    }
+        // console.log(userAns.scores);
         $.post("/api/friends", userAns, (function(data){
             $("#friendMatch-name").text(data.name);
             $("#friendMatch-img").attr("src", data.photo).width("300px");
