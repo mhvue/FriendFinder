@@ -211,24 +211,6 @@
         </div>
       </div>
 
-      <div class="modal fade" id="MsgModal" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Request Failed!</h4>
-                </div>
-                <div class="modal-body">
-                    <p>There has been an issue submitting your request. Please return to the form to ensure all fields are properly filled out. If you are still unable to submit please contact your manager directly.
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" data-dismiss="modal">Try again</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
  <script type = "text/javascript">
 
  $("#submitBtn").on("click", function () {
@@ -259,22 +241,21 @@
      count++
 
     if( $("#Q" + count).val() === "Choose..."){
-        console.log("true")
-     $("#Msgmodal").modal("show");
+        $("#Q" + count).css("background-color", "orange")
     }
-    else {
-        break;
+    else{
+        $("#Q" + count).css("background-color", "white")
     }
 }
 
 //validation for if no name entered, no photo url entered, and if any single question missed
     if(userAns.name == ""){
-     $("#firstNameInput").after("Please input name").css("background-color","orange");
+     $("#firstNameInput").after("Please input name").css("background-color","#ffd9b3");
        console.log(userAns.name);
     }   
     else if(userAns.photo == "" && !userAns.name == ""){
         $("#firstNameInput").css("background-color","white");
-        $("#photoInput").after("Please input photo").css("background-color","orange");
+        $("#photoInput").after("Please input photo").css("background-color"," #ffd9b3");
     }
     else if(!userAns.photo == "" && !userAns.name == ""){
         $("#firstNameInput").css("background-color","white");
